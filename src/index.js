@@ -24,6 +24,10 @@ import './bootstrap.css'
     const [posts, setPosts] = useState([]);
     const [postId, setPostId] = useState(null);
 
+    const handleDelete = (postIdToDelete) => {
+      console.log(postIdToDelete, "post id to delete")
+    }
+
 
 
     return <>
