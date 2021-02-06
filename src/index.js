@@ -12,6 +12,7 @@ import {
     AllPosts,
     AddPost,
     Profile,
+    MessageForm,
     // EditPost,
     Nav
   } from './components';
@@ -25,6 +26,7 @@ import './style.css'
     const [user, setUser] = useState({});
     const [posts, setPosts] = useState([]);
     const [postId, setPostId] = useState(null);
+    
 
 
 
@@ -46,7 +48,7 @@ import './style.css'
     <Profile token= {token} setToken={setToken} user={user} setUser={setUser} posts={posts} />
     </Route>
     <Route path = '/AllPosts'>
-    <AllPosts token={token} posts={posts} setPosts={setPosts}/>
+    <AllPosts MessageForm = {MessageForm} token={token} posts={posts} setPosts={setPosts}/>
     </Route>
     {/* <Route>
       <EditPost  postId={postId} setPostId={setPostId}/>

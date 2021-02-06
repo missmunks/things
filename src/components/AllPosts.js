@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import {MessageForm} from '/MessageForm';
 
-const AllPosts = ({token, posts, setPosts})=> {
+
+const AllPosts = ({token, posts, setPosts, MessageForm})=> {
         if(!posts) {
             <h1>Nobody is selling anything right now. Try Craigslist.</h1>
         };
@@ -55,16 +55,40 @@ const AllPosts = ({token, posts, setPosts})=> {
     //         )
     // };
 
-    const MessageForm = ({posts}) => {
-        console.log("tortilla chips")
-        console.log("this is the post from message form", posts)
-        return(
-          <form>
-            <textarea placeholder="Write Message" onChange={(ev) => {posts.message = posts.message.ev.target.value}}></textarea>
-            <button type="submit">Send Message</button>
-          </form>
-        );
-      }
+    // const MessageForm = () => {
+    //     console.log("tortilla chips")
+    //     console.log("this is the post from message form", posts)
+    //     return(
+    //       <form>
+    //         <textarea placeholder="Write Message" onChange={(e) => {posts.message = posts.message.e.target.value}}></textarea>
+    //         <button type="submit">Send Message</button>
+    //       </form>
+         
+    //     );
+    //   }
+
+    // const messageForm = () => {
+    //     const [messages, setMessages] = useState([]);
+      
+    //     const handleMessage= async () => {
+    //       const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts`, {
+    //         //   method: 'POST',
+    //           headers: {
+    //               "Content-Type": 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //               }
+    //             })
+    //             const data = await response.json();
+    //             console.log(data, "handle message data")
+    //           }
+    //     // console.log("this is the post from message form", post)
+    //     return(
+    //       <form onSubmit={MessageForm}>
+    //         <textarea placeholder="Write Message" onChange={(ev) => setMessages(ev.target.value)}></textarea>
+    //         <button type="submit" onClick={handleMessage}>Send Message</button>
+    //       </form>
+    //     );
+    //   }
 
 
 return <>
@@ -79,7 +103,7 @@ return <>
                 {location === "[On Request]" ? <h3>Location: {location}</h3> : "" }
                 <h3>Posted By: {post.author.username}</h3>
                 {/* <h3>{messages}</h3> */}
-                {`${token}` && !post.isAuthor ? <MessageForm /> : ""}
+                {`${token}` && !post.isAuthor ? <MessageForm />  : ""}
                 {`${token}` && post.isAuthor ? <button className="btn btn-outline-info">Edit</button> : "" }
                 {`${token}` && post.author.username === "jess" ? <button className="btn btn-outline-danger" onClick= {() => {handleDelete(_id)}}>Delete</button> : "" }
               
