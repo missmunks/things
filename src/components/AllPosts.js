@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+// import {MessageForm} from '/MessageForm';
 
 const AllPosts = ({token, posts, setPosts})=> {
         if(!posts) {
@@ -42,21 +42,46 @@ const AllPosts = ({token, posts, setPosts})=> {
     // setPosts(posts);
     // return posts;
 
+    // const message = () => {
+    //     console.log("sandwiches")
+    //     return(
+    //         <form>
+    //           <textarea placeholder="Write Message" onChange={(ev) => {
+    //               posts.messages = (ev.target.value)}}>
+    //                 {console.log("event", ev.target.value)}
+    //               </textarea>
+    //           <button type="submit">Send Message</button>
+    //         </form>
+    //         )
+    // };
+
+    const MessageForm = ({posts}) => {
+        console.log("tortilla chips")
+        console.log("this is the post from message form", posts)
+        return(
+          <form>
+            <textarea placeholder="Write Message" onChange={(ev) => {posts.message = posts.message.ev.target.value}}></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        );
+      }
+
 
 return <>
     { 
         posts.map((post) => {
             // include is author in obj use is author with stuff
-            const {title, description, price, location, _id, messages} = post;
+            const {title, description, price, location, _id, author, messages, username} = post;
             return (<div key = {_id} className = "post">
                 <h2>{title}</h2>
                 <h3>{price}</h3>
                 <div> {description}</div>
                 {location === "[On Request]" ? <h3>Location: {location}</h3> : "" }
                 <h3>Posted By: {post.author.username}</h3>
-                <h3>{messages}</h3>
+                {/* <h3>{messages}</h3> */}
+                {`${token}` && !post.isAuthor ? <MessageForm /> : ""}
                 {`${token}` && post.isAuthor ? <button className="btn btn-outline-info">Edit</button> : "" }
-                {`${token}` && post.isAuthor ? <button className="btn btn-outline-danger" onClick= {() => {handleDelete(_id)}}>Delete</button> : "" }
+                {`${token}` && post.author.username === "jess" ? <button className="btn btn-outline-danger" onClick= {() => {handleDelete(_id)}}>Delete</button> : "" }
               
                
             </div>

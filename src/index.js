@@ -11,7 +11,7 @@ import {
     AccountForm,
     AllPosts,
     AddPost,
-    MessageForm,
+    Profile,
     // EditPost,
     Nav
   } from './components';
@@ -34,16 +34,16 @@ import './style.css'
     <h1>Strangers Things</h1>
     <Nav token = {token}/>
     
-    {user.username && <div>Hello {user.username}</div>}
+    {user.username && <h2>Hello {user.username}</h2>}
     {/* <button type= "submit" onClick={setPostId(postId)}>Edit</button> */}
     <Route path="/login">
-    <AccountForm setToken={setToken} type={'login'} setUser={setUser}/>
+    <AccountForm setToken={setToken} type={'login'} setUser={setUser} posts={posts}/>
     </Route>
     <Route path="/register">
     <AccountForm setToken={setToken} type={'register'} setUser={setUser}/>
     </Route>
-    <Route>
-    <MessageForm token= {token} setToken={setToken} user={user} setUser={setUser} />
+    <Route path='/Profile'>
+    <Profile token= {token} setToken={setToken} user={user} setUser={setUser} posts={posts} />
     </Route>
     <Route path = '/AllPosts'>
     <AllPosts token={token} posts={posts} setPosts={setPosts}/>

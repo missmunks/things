@@ -7,7 +7,7 @@ const Nav = ({token }) => {
 
     return (
         <nav className = "nav">
-            <Link to='/MessageForm'>Profile</Link>
+            <Link to='/Profile'>Profile</Link>
             <Link to='/AllPosts'>Posts</Link>
             <Link to='/login' >{token ? "Logout" : "Login"}</Link>
             <Link to='/AddPost'>AddPost</Link>

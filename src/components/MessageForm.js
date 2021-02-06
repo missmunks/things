@@ -1,36 +1,21 @@
-import { useEffect } from "react";
+import React from "react";
 
 
-const MessageForm = ({token, user, setUser, setToken}) =>{
-
-  useEffect(() => {
-    getMessages()
-  }, [])
-
-  
-
-
-const getMessages = async () => {
-        if({token}){
-            const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/me`, {
-              method: 'GET',
-              headers: {
-                "Authorization": `Bearer ${token}`, 
-              },
-          
-            }) 
-            const {data} = await response.json();
-            console.log('message form data' , data);
-            setUser({user}) 
-          
+const MessageForm = ({post}) => {
+  console.log("this is the post from message form", post)
+  return(
+    <form>
+      <textarea placeholder="Write Message" onChange={(ev) => {post.message = post.message.ev.target.value}}></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  );
+}
             
-            }
-    
-          }
+          
+        
+       
+  export default MessageForm       
+        
 
-return (
-  <h1>this is the message form</h1>
-)
-};
- 
-export default MessageForm;
+
+
