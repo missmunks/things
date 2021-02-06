@@ -3,13 +3,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 
-const Nav = () => {
+const Nav = ({token }) => {
 
     return (
-        <nav>
-            <Link to='/'>Home</Link>
+        <nav className = "nav">
+            <Link to='/MessageForm'>Profile</Link>
             <Link to='/AllPosts'>Posts</Link>
-            <Link to='/login'>Login</Link>
+            <Link to='/login' >{token ? "Logout" : "Login"}</Link>
             <Link to='/AddPost'>AddPost</Link>
         </nav>
     );

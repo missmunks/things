@@ -48,7 +48,7 @@ return (
   <input type='text'  placeholder='Location' onChange={(ev) => setLocation( ev.target.value )} />
   <button type='submit' onClick={handleClick}>ADD AWESOMENESS</button>
 </form>
-<Link to='./Allposts'></Link>
+
 </>
 )
 };

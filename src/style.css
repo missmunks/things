@@ -1,0 +1,23 @@
+
+
+nav {
+    justify-content: space-around;
+    background-color: lightpink;
+    font-size: 3em;
+}
+
+h1 {
+    background-color: lightslategrey;
+    
+}
+
+.post {
+    display: flex;
+    padding: 1em;
+    width: 40%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: linen;
+    border: 5px solid black;
+
+}

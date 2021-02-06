@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+// import { AccountForm } from '.';
 
 const AccountForm = ({type, setToken, setUser}) => {
   const [username, setUserName] = useState("");
@@ -51,7 +52,7 @@ setUserPassword("");
     <button type="submit">{title}</button>
   </form>
   <Link to={`${oppositeType}`}>{oppositeTitle}</Link>
-  <Link to='./AllPosts'>Posts</Link>
+
   </> )
 }
 
