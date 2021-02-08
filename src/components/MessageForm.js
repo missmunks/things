@@ -1,35 +1,38 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 
 
-const MessageForm = ({token}) => {
-  const [messages, setMessages] = useState([]);
+const MessageForm = ({postId, posts}) => {
+  const myToken = localStorage.getItem('myToken')
+  console.log(myToken, "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
+  const [messages, setMessages] = useState("");
 
-  useEffect(() => {
-    handleMessage()
-  }, [])
+ console.log(posts, "XXXXXXXXXXXXXXXXXXXXXX")
 
-  const handleMessage= async () => {
-    const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts/me`, {
-        method: 'PATCH',
+  const handleMessage = async (ev) => {
+    ev.preventdefault();
+
+    const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts/${_id}/messages`, {
+        method: 'POST',
         headers: {
             "Content-Type": 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${myToken}`
             },
             body: JSON.stringify({
-              post: {
+              posts: {
                 messages
               }
             })
           })
           const data = await response.json();
-          console.log(data, "handle message data")
+          console.log(data, "handle message dataaaaaaaaaaaaaaaaaaaaaaaa")
+          setMessages("")
         }
-  // console.log("this is the post from message form", post)
+  console.log("this is the post from message form", posts)
   return(<>
-    <form onSubmit={MessageForm}>
-      <textarea placeholder="Write Message" onChange={(ev) => setMessages(ev.target.value)}></textarea>
-      <button type="submit" onClick={handleMessage}>Send Message</button>
+    <form onSubmit={handleMessage}>
+      <textarea placeholder="Write Message" value = {messages} onChange={(ev) => setMessages(ev.target.value)}></textarea>
+      <button type="submit">Send Message</button>
     </form>
         </>
   );

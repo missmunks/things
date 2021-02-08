@@ -24,6 +24,9 @@ const AccountForm = ({type, setToken, setUser}) => {
   const {data} = await response.json();
  
   const token = data?.token;
+  localStorage.setItem("myToken", token)
+  const myToken = localStorage.getItem('myToken')
+  console.log(myToken)
  
   if(token){
   setToken(token);

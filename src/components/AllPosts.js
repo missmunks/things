@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import MessageForm from './MessageForm';
 
 
-const AllPosts = ({token, posts, setPosts, MessageForm})=> {
+const AllPosts = ({token, posts, setPosts})=> {
         if(!posts) {
             <h1>Nobody is selling anything right now. Try Craigslist.</h1>
         };
@@ -30,9 +31,9 @@ const AllPosts = ({token, posts, setPosts, MessageForm})=> {
               })
     
         const {data: {posts}} = await response.json()
-        console.log(posts, "unauth posts")
+        // console.log(posts, "unauth posts")
         setPosts(posts) 
-        console.log(posts, "are these posts") 
+        // console.log(posts, "are these posts") 
 
     };
 
@@ -67,7 +68,7 @@ const AllPosts = ({token, posts, setPosts, MessageForm})=> {
     //     );
     //   }
 
-    // const messageForm = () => {
+    // const MessageForm = () => {
     //     const [messages, setMessages] = useState([]);
       
     //     const handleMessage= async () => {
@@ -103,7 +104,7 @@ return <>
                 {location === "[On Request]" ? <h3>Location: {location}</h3> : "" }
                 <h3>Posted By: {post.author.username}</h3>
                 {/* <h3>{messages}</h3> */}
-                {`${token}` && !post.isAuthor ? <MessageForm />  : ""}
+                {`${token}` && !post.isAuthor ? <MessageForm /> : "" }
                 {`${token}` && post.isAuthor ? <button className="btn btn-outline-info">Edit</button> : "" }
                 {`${token}` && post.author.username === "jess" ? <button className="btn btn-outline-danger" onClick= {() => {handleDelete(_id)}}>Delete</button> : "" }
               
