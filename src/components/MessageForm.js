@@ -1,16 +1,38 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 
-const MessageForm = ({postId, posts}) => {
+const MessageForm = () => {
+  const [posts, setPosts] = useState([])
   const myToken = localStorage.getItem('myToken')
   console.log(myToken, "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
   const [messages, setMessages] = useState("");
 
+  useEffect(() => {
+    getPosts();
+  })
+
+  const getPosts = async () => {
+    const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts`, {
+        headers: {
+              'Authorization': `Bearer ${myToken}`
+            }
+          })
+
+    const {data: {posts}} = await response.json()
+    console.log(posts, "unauth posts")
+    setPosts(posts) 
+    console.log(posts, "are these posts") 
+
+};
+
+
  console.log(posts, "XXXXXXXXXXXXXXXXXXXXXX")
+  const {_id} = posts
+
 
   const handleMessage = async (ev) => {
-    ev.preventdefault();
+    ev.preventDefault();
 
     const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts/${_id}/messages`, {
         method: 'POST',

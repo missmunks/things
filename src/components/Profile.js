@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 
     const Profile = ( { token, setUser, posts, user, content, setContent } ) => {
-
+   
         useEffect(() => {
             handleUser()
         }, []);
