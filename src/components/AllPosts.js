@@ -91,22 +91,19 @@ const AllPosts = ({token, posts, setPosts})=> {
     //     );
     //   }
 
-
 return <>
     { 
         posts.map((post) => {
-            // include is author in obj use is author with stuff
-            const {title, description, price, location, _id, author, messages, username} = post;
+            const {title, description, price, location, _id, author, isAuthor, messages, username} = post;
             return (<div key = {_id} className = "post">
                 <h2>{title}</h2>
                 <h3>{price}</h3>
                 <div> {description}</div>
-                {location === "[On Request]" ? <h3>Location: {location}</h3> : "" }
-                <h3>Posted By: {post.author.username}</h3>
-                {/* <h3>{messages}</h3> */}
-                {`${token}` && !post.isAuthor ? <MessageForm /> : "" }
-                {`${token}` && post.isAuthor ? <button className="btn btn-outline-info">Edit</button> : "" }
-                {`${token}` && post.author.username === "jess" ? <button className="btn btn-outline-danger" onClick= {() => {handleDelete(_id)}}>Delete</button> : "" }
+                {location === "[On Request]" ? "" :<h3>Location: {location}</h3> }
+                <h3>Posted By: {author.username}</h3>
+                {`${token}` && !isAuthor ? <MessageForm /> : "" }
+                {`${token}` && isAuthor ? <button className="btn btn-outline-info">Edit</button> : "" }
+                {`${token}` && author.username === "jess" ? <button className="btn btn-outline-danger" onClick= {() => {handleDelete(_id)}}>Delete</button> : "" }
               
                
             </div>

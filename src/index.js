@@ -34,7 +34,7 @@ import './style.css'
 
     return <>
     <h1>Strangers Things</h1>
-    <Nav token = {token}/>
+    <Nav token = {token} setToken= {setToken}/>
     
     {user.username && <h2>Hello {user.username}</h2>}
     {/* <button type= "submit" onClick={setPostId(postId)}>Edit</button> */}

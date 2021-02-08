@@ -1,16 +1,13 @@
 import React, {useEffect, useState} from "react";
 
-
-
 const MessageForm = () => {
   const [posts, setPosts] = useState([])
   const myToken = localStorage.getItem('myToken')
-  console.log(myToken, "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
   const [messages, setMessages] = useState("");
 
   useEffect(() => {
     getPosts();
-  })
+  }, [])
 
   const getPosts = async () => {
     const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/posts`, {
@@ -20,14 +17,9 @@ const MessageForm = () => {
           })
 
     const {data: {posts}} = await response.json()
-    console.log(posts, "unauth posts")
     setPosts(posts) 
-    console.log(posts, "are these posts") 
-
 };
 
-
- console.log(posts, "XXXXXXXXXXXXXXXXXXXXXX")
   const {_id} = posts
 
 
@@ -50,7 +42,7 @@ const MessageForm = () => {
           console.log(data, "handle message dataaaaaaaaaaaaaaaaaaaaaaaa")
           setMessages("")
         }
-  console.log("this is the post from message form", posts)
+
   return(<>
     <form onSubmit={handleMessage}>
       <textarea placeholder="Write Message" value = {messages} onChange={(ev) => setMessages(ev.target.value)}></textarea>

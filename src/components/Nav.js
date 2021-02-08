@@ -7,10 +7,10 @@ const Nav = ({token }) => {
 
     return (
         <nav className = "nav">
-            <Link to='/Profile'>Profile</Link>
+            {token ? <Link to='/Profile'>Profile</Link> : "" }
             <Link to='/AllPosts'>Posts</Link>
             <Link to='/login' >{token ? "Logout" : "Login"}</Link>
-            <Link to='/AddPost'>AddPost</Link>
+            {token ? <Link to='/AddPost'>AddPost</Link> : ""}
         </nav>
     );
 }
