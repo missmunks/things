@@ -33,7 +33,7 @@ import './style.css'
 
 
     return <>
-    <h1>Strangers Things</h1>
+    <h1 className='title'>Strangers Things</h1>
     <Nav token = {token} setToken= {setToken}/>
     
     {user.username && <h2>Hello {user.username}</h2>}

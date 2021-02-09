@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-// import { AccountForm } from '.';
+
 
 const AccountForm = ({type, setToken, setUser}) => {
   const [username, setUserName] = useState("");
@@ -12,7 +12,7 @@ const AccountForm = ({type, setToken, setUser}) => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    console.log("userName", username)
+
     const response = await fetch(`https://strangers-things.herokuapp.com/api/2010-CPU-RM-WEB-PT/users/${type}`, {
       method:'POST',
       headers:{"Content-Type": "application/json"
@@ -22,11 +22,10 @@ const AccountForm = ({type, setToken, setUser}) => {
   })
 
   const {data} = await response.json();
- 
   const token = data?.token;
   localStorage.setItem("myToken", token)
   const myToken = localStorage.getItem('myToken')
-  console.log(myToken)
+
  
   if(token){
   setToken(token);
@@ -38,16 +37,13 @@ const AccountForm = ({type, setToken, setUser}) => {
 
   }) 
   const {data} = await response.json();
-  console.log('data' , data);
-  setUser(data) 
-
-  
+  setUser(data)  
   }
 setUserName("");
 setUserPassword("");
 }
   
-  return (<>
+  return (<div className='accountForm'>
   <h2>{title}</h2>
   <form onSubmit={handleSubmit}>
     <input type="text" value={username} onChange={(ev) => setUserName( ev.target.value )} placeholder="user name"></input>
@@ -56,7 +52,7 @@ setUserPassword("");
   </form>
   <Link to={`${oppositeType}`}>{oppositeTitle}</Link>
 
-  </> )
+  </div> )
 }
 
 export default AccountForm;

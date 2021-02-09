@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+
 
 const AddPost = ({token, posts, setPosts}) => {
   
@@ -33,9 +33,8 @@ const AddPost = ({token, posts, setPosts}) => {
 })
   
 const data = await response.json();
-console.log(data)
 setPosts([data.data.posts, ...posts])
-console.log(data)
+
   };
 
 
@@ -44,11 +43,11 @@ console.log(data)
 return (
 <>
 <form onSubmit= {AddPost}>
-  <input type='text'  placeholder='Title' onChange={(ev) => setTitle( ev.target.value )} />
-  <input type='text'  placeholder='Price' onChange={(ev) => setPrice( ev.target.value )} />
-  <input type='text'  placeholder='description' onChange={(ev) => setDescription( ev.target.value )} />
-  <input type='text'  placeholder='Location' onChange={(ev) => setLocation( ev.target.value )} />
-  <button type='submit' onClick={handleClick}>ADD AWESOMENESS</button>
+  <input type='text' className='add' placeholder='Title' onChange={(ev) => setTitle( ev.target.value )} />
+  <input type='text'  className='add' placeholder='Price' onChange={(ev) => setPrice( ev.target.value )} />
+  <input type='text'  className='add' placeholder='description' onChange={(ev) => setDescription( ev.target.value )} />
+  <input type='text'  className='add' placeholder='Location' onChange={(ev) => setLocation( ev.target.value )} />
+  <button type='submit' className='addButton' onClick={handleClick}>ADD AWESOMENESS</button>
 </form>
 
 </>

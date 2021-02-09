@@ -1,23 +1,63 @@
+* {
+    background-color:silver
+}
 
+body {
+    background-color: silver;
+}
 
 nav {
     justify-content: space-around;
-    background-color: lightpink;
+    background-color:turquoise; 
     font-size: 3em;
+   
 }
 
-h1 {
+.title {
     background-color: lightslategrey;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    margin-bottom: 0;
+    font-size: 80px;
+    text-align: center;
     
 }
 
 .post {
+    margin-left: 50%;
     display: flex;
     padding: 1em;
-    width: 40%;
+    width: 600px;
+    margin: 20px;
+    box-shadow: 10px 20px turquoise;
     flex-wrap: wrap;
     flex-direction: column;
-    background-color: linen;
     border: 5px solid black;
+}
+
+.card {
+  margin: 0 auto;
+    width: 500px;
+    background-color:silver;
+    border: none;
+}
+.postTitle{
+    font-family: 'ZCOOL KuaiLe', cursive;
+    background-color: lightslategrey;
+}
+
+.accountForm {
+    height: auto;
+    background-color: silver;
+}
+
+.add{
+    height: 70px;
+    margin: 10px;
+}
+.addButton{
+    border-radius: 50%;
+    height: 100px;
+    background-color: yellow;
+    border: 5px solid turquoise;
 
 }
